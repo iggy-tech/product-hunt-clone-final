@@ -5,7 +5,7 @@ import { auth } from "@/auth";
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY as string);
 
-const priceId = "price_1PLX2ZKEOSg8ptCxnQd93OSt";
+const priceId = "price_1PLqVaKEOSg8ptCxWHkkumTe";
 
 // CREATE A FUNCTION TO GENERATE A CHECKOUT LINK
 
