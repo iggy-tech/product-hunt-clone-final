@@ -1,0 +1,166 @@
+generator client {
+  provider = "prisma-client-js"
+}
+datasource db {
+  provider  = "postgresql"
+  url  	    = env("DATABASE_URL")
+}
+
+model Account {
+  id                 String  @id @default(cuid())
+  userId             String
+  type               String
+  provider           String
+  providerAccountId  String
+  refresh_token      String?  @db.Text
+  access_token       String?  @db.Text
+  expires_at         Int?
+  token_type         String?
+  scope              String?
+  id_token           String?  @db.Text
+  session_state      String?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+}
+
+model Session {
+  id           String   @id @default(cuid())
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model User {
+  id            String    @id @default(cuid())
+  image         String
+  name          String
+  email         String  @unique
+  emailVerified DateTime?
+
+
+  isPremium     Boolean @default(false)
+  notifications Notification[]
+  upvotes      Upvote[]
+  accounts      Account[]
+  sessions      Session[]
+  products      Product[]
+  comments      Comment[]
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt 
+}
+
+
+
+
+model Category {
+  id       String    @id @default(cuid())
+  name     String    @unique
+  products Product[] // Many-to-many relation with Product
+}
+
+model Product {
+  id          String     @id @default(cuid())
+  name        String
+  slug        String     @unique
+  headline    String
+  rank        Int
+  description String
+  logo        String
+  releaseDate String
+  website     String
+  twitter     String
+  discord     String
+  notification Notification[] 
+  comments    Comment[]
+  upvotes     Upvote[]
+  images      Image[]
+  categories  Category[] // Many-to-many relation with Category
+  createdAt   DateTime   @default(now())
+  updatedAt   DateTime   @updatedAt
+  user        User       @relation(fields: [userId], references: [id])
+  userId      String
+  status      Status     @default(PENDING)
+
+  @@index([userId])
+  @@index([status])
+}
+
+
+
+model Image {
+  id        String   @id @default(cuid())
+  productId String
+  product   Product  @relation(fields: [productId], references: [id], onDelete: Cascade)
+  url       String  
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([productId])
+}
+
+model Upvote {
+  id        String   @id @default(cuid())
+  productId String
+  product   Product  @relation(fields: [productId], references: [id], onDelete: Cascade)
+  userId    String
+  user      User     @relation(fields: [userId], references: [id])
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+
+
+
+model Comment {
+  id             String    @id @default(cuid())
+  profilePicture String
+  productId      String
+  product        Product   @relation(fields: [productId], references: [id], onDelete: Cascade)
+  userId         String
+  user           User      @relation(fields: [userId], references: [id])
+  body           String
+  createdAt      DateTime  @default(now())
+  updatedAt      DateTime  @updatedAt
+
+  
+}
+
+
+
+
+model Notification {
+  id        String   @id @default(cuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id])
+  body      String
+  profilePicture String
+  productId String
+  commentId String?
+  product   Product  @relation(fields: [productId], references: [id], onDelete: Cascade)
+  type      NotificationType
+  status    NotificationStatus @default(UNREAD)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+
+enum Status {
+  PENDING
+  ACTIVE
+  REJECTED
+}
+
+enum NotificationStatus {
+  UNREAD
+  READ
+}
+
+enum NotificationType {
+  UPVOTE
+  COMMENT
+  ACTIVATED
+  REJECTED
+}
