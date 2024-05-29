@@ -14,6 +14,8 @@ const NewProductLayout = async ({
 }>) => {
   const authenticatedUser = await auth();
 
+  const notifications = await getNotifications()
+
   const products = await getProductsByUserId(authenticatedUser?.user?.id || "");
 
   const isPremium = await isUserPremium();
@@ -24,7 +26,16 @@ const NewProductLayout = async ({
 
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>
+        <Navbar
+          authenticatedUser={authenticatedUser}
+          products={products}
+         notifications={notifications}
+        />
+        
+        {children}
+        
+        </body>
     </html>
   );
 };
