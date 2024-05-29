@@ -27,12 +27,7 @@ const PagesLayout = async ({
   return (
     <html lang="en">
       <body>
-        <Navbar 
-        authenticatedUser={authenticatedUser}
-        products={products}
-        notifications={notifications}
-        
-        />
+ 
 
         {children}
       </body>
