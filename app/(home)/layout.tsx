@@ -16,7 +16,10 @@ const HomeLayout = async ({
   const products = await getProductsByUserId(authenticatedUser?.user?.id || "");
 
   return (
-    <html lang="en">
+    <html 
+    suppressHydrationWarning={true}
+    
+    lang="en">
       <body>
         <Suspense fallback={<Spinner />}>
           <Navbar

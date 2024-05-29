@@ -25,7 +25,10 @@ const PagesLayout = async ({
 
 
   return (
-    <html lang="en">
+    <html 
+    suppressHydrationWarning={true}
+    
+    lang="en">
       <body>
         <Navbar 
         authenticatedUser={authenticatedUser}
