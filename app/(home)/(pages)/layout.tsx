@@ -1,6 +1,5 @@
 import { auth } from "@/auth";
-import Navbar from "@/components/navbar/navbar";
-import { getNotifications, getProductsByUserId } from "@/lib/server-actions";
+
 import { redirect } from "next/navigation";
 
 const PagesLayout = async ({
@@ -16,17 +15,11 @@ const PagesLayout = async ({
     redirect("/");
   }
 
-  const notifications = await getNotifications();
-  const products = await getProductsByUserId(authenticatedUser?.user?.id || "");
 
   return (
     <html suppressHydrationWarning={true} lang="en">
       <body>
-        <Navbar
-          authenticatedUser={authenticatedUser}
-          products={products}
-          notifications={notifications}
-        />
+
 
         {children}
       </body>
