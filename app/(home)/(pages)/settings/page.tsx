@@ -7,12 +7,7 @@ import { redirect } from "next/navigation";
 const Settings = async () => {
 
 
-  const authenticatedUser = await auth();
-
-  if (!authenticatedUser) {
-    redirect("/");
-  }
-
+ 
 
 
   const isPremium = await isUserPremium();

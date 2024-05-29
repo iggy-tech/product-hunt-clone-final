@@ -7,11 +7,7 @@ import { PiCrown, PiPlus } from "react-icons/pi";
 
 const MyProducts = async () => {
 
-  const authenticatedUser = await auth();
 
-  if (!authenticatedUser) {
-    redirect("/");
-  }
 
 
 
