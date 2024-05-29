@@ -1,9 +1,20 @@
+import { auth } from "@/auth";
 import { getOwnerProducts, isUserPremium } from "@/lib/server-actions";
 import Image from "next/image";
 import Link from "next/link";
+import { redirect } from "next/navigation";
 import { PiCrown, PiPlus } from "react-icons/pi";
 
 const MyProducts = async () => {
+
+  const authenticatedUser = await auth();
+
+  if (!authenticatedUser) {
+    redirect("/");
+  }
+
+
+
   const products = await getOwnerProducts();
 
   const isPremium = await isUserPremium();
