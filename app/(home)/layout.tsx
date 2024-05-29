@@ -23,7 +23,7 @@ const HomeLayout = async ({
       <body>
         <Suspense fallback={<Spinner />}>
           <Navbar
-            authenticatedUser={authenticatedUser || ''}
+            authenticatedUser={authenticatedUser}
             notifications={notifications}
             products={products}
           />

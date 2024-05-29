@@ -21,6 +21,7 @@ export default function RootLayout({
     
     lang="en">
       <body className={font.className}>
+        
         {children}
         <Toaster />
         
