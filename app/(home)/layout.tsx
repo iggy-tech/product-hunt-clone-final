@@ -20,9 +20,6 @@ const HomeLayout = async ({
   const notifications = await getNotifications();
   const products = await getProductsByUserId(authenticatedUser?.user?.id || "");
 
-  if (!authenticatedUser) {
-    redirect("/");
-  }
 
   return (
     <html 
