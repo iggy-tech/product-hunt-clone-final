@@ -27,8 +27,8 @@ export const createCheckoutSession = async ({ email }: { email: string }) => {
 
     return { url: session.url };
   } catch (error) {
-    console.log(error);
-    throw new Error("Error creating checkout session");
+    console.error("Stripe error:", error);
+    throw new Error("Failed to create checkout session");
   }
 };
 
