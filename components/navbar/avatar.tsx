@@ -21,7 +21,7 @@ const Avatar: React.FC<AvatarProps> = ({ authenticatedUser }) => {
 
 
     const handleMyUpvotes = () => {
-        window.location.href = "/pages/my-upvoted";
+        window.location.href = "/my-upvoted";
     }
 
 
@@ -41,7 +41,7 @@ const Avatar: React.FC<AvatarProps> = ({ authenticatedUser }) => {
         <DropdownMenuContent className="w-40 space-y-1 p-2 text-gray-600">
           <DropdownMenuItem>
             <Link
-              href="/pages/my-products"
+              href="/my-products"
               className="flex gap-x-2 rounded-sm w-full cursor-pointer"
             >
               <PiPackage className="text-xl" />
@@ -59,7 +59,7 @@ const Avatar: React.FC<AvatarProps> = ({ authenticatedUser }) => {
           </DropdownMenuItem>
           <DropdownMenuItem>
             <Link
-              href="/pages/settings"
+              href="/settings"
               className="flex gap-x-2 rounded-sm w-full cursor-pointer"
             >
               <PiGear className="text-xl" />

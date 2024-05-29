@@ -4,11 +4,13 @@ import Spinner from "@/components/spinner";
 import { getNotifications, getProductsByUserId } from "@/lib/server-actions";
 import { Suspense } from "react";
 
-const HomeLayout = async ({
-  children,
-}: Readonly<{
+
+type Props = {
   children: React.ReactNode;
-}>) => {
+};
+
+
+const HomeLayout = async ({children }: Props) => {
   // get the user from the server
 
   const authenticatedUser = await auth();
