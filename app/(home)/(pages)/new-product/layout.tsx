@@ -25,7 +25,7 @@ const NewProductLayout = async ({
   return (
     <html lang="en">
       <body>
-        <Navbar authenticatedUser={authenticatedUser} products={products} />
+     
         {children}
         </body>
     </html>
