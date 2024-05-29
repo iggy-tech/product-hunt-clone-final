@@ -14,7 +14,7 @@ const ShareModalContent: React.FC<ShareModalContentProps> = ({
 
   const [isCopied, setIsCopied] = useState(false);
 
-  const urlPrefix = "http://localhost:3000/product/";
+  const urlPrefix = "https://product-hunt-clone-final.vercel.app/product/";
 
   const handleCopy = () => {
     setIsCopied(true);
