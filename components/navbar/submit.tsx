@@ -21,7 +21,7 @@ const Submit: React.FC<SubmitProps> = ({ products, authenticatedUser }) => {
     if (!isPremium && products.length === 2) {
       setIsUpgradeModalVisible(true);
     } else {
-      router.push("/new-product");
+      router.push("/pages/new-product");
     }
   };
 
