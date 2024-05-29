@@ -10,6 +10,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { PiGear, PiHeart, PiPackage } from "react-icons/pi";
 import { signOut } from "next-auth/react";
+import { redirect } from "next/navigation";
 
 
 interface AvatarProps {
@@ -17,6 +18,12 @@ interface AvatarProps {
 }
 
 const Avatar: React.FC<AvatarProps> = ({ authenticatedUser }) => {
+
+  const handleSignOut = async () => {
+    await signOut();
+    redirect("/");
+  }
+
 
 
 
@@ -68,7 +75,7 @@ const Avatar: React.FC<AvatarProps> = ({ authenticatedUser }) => {
           </DropdownMenuItem>
           <DropdownMenuItem>
             <div
-            onClick={() => signOut()}
+            onClick={handleSignOut}
             >
                 Log out
             </div>
