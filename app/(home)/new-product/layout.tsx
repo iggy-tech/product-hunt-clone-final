@@ -24,10 +24,7 @@ const NewProductLayout = async ({
 
   return (
     <html lang="en">
-      <body>
-     
-        {children}
-        </body>
+      <body>{children}</body>
     </html>
   );
 };
