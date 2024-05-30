@@ -1,5 +1,10 @@
 import { auth } from "@/auth";
-import { getProductsByUserId, isUserPremium } from "@/lib/server-actions";
+import Navbar from "@/components/navbar/navbar";
+import {
+  getNotifications,
+  getProductsByUserId,
+  isUserPremium,
+} from "@/lib/server-actions";
 import { redirect } from "next/navigation";
 
 const NewProductLayout = async ({
@@ -8,6 +13,8 @@ const NewProductLayout = async ({
   children: React.ReactNode;
 }>) => {
   const authenticatedUser = await auth();
+
+  const notifications = await getNotifications()
 
   const products = await getProductsByUserId(authenticatedUser?.user?.id || "");
 
@@ -20,10 +27,20 @@ const NewProductLayout = async ({
   if (!authenticatedUser) {
     redirect("/");
   }
+  
 
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>
+        <Navbar
+          authenticatedUser={authenticatedUser}
+          products={products}
+         notifications={notifications}
+        />
+        
+        {children}
+        
+        </body>
     </html>
   );
 };
