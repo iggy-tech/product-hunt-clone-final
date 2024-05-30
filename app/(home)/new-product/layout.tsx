@@ -24,6 +24,11 @@ const NewProductLayout = async ({
     redirect("/");
   }
 
+  if (!authenticatedUser) {
+    redirect("/");
+  }
+  
+
   return (
     <html lang="en">
       <body>

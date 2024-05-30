@@ -92,7 +92,7 @@ const PendingProducts: React.FC<PendingProductsProps> = ({
 
   return (
     <div>
-      <div className="flex flex-col w-full mt-6">
+      <div className="flex flex-col w-full my-6">
         {formattedProducts?.map((product: any) => (
           <div
             key={product.id}
