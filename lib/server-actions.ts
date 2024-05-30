@@ -333,6 +333,11 @@ export const getActiveProducts = async () => {
         },
       },
     },
+    orderBy: {
+      upvotes: {
+        _count: "desc",
+      },
+    },
   });
 
   return products;

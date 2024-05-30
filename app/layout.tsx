@@ -3,6 +3,7 @@ import { DM_Sans } from "next/font/google";
 import "./globals.css";
 import { Toaster } from "@/components/ui/sonner";
 
+
 const font = DM_Sans({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -21,6 +22,8 @@ export default function RootLayout({
     
     lang="en">
       <body className={font.className}>
+  
+
         
         {children}
         <Toaster />
