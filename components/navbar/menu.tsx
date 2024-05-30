@@ -35,11 +35,12 @@ const Menu = () => {
             Community {showCommunityMenu && <CommunityMenu />}
         </div>
 
-        <div>Advertise</div>
+        <div className="hover:text-[#ff6154] py-4">Advertise</div>
 
         <div
         onMouseEnter={() => setShowAboutMenu(true)}
         onMouseLeave={() => setShowAboutMenu(false)}
+        className="hover:text-[#ff6154] py-4"
         
         >
             About {showAboutMenu && <AboutMenu />}
