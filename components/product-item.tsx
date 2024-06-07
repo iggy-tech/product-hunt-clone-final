@@ -14,7 +14,7 @@ import AuthContent from "./navbar/auth-content";
 import Link from "next/link";
 import { upvoteProduct } from "@/lib/server-actions";
 import { motion } from "framer-motion";
-import { init } from "next/dist/compiled/webpack/webpack";
+
 
 interface ProductItemProps {
   product: any;
