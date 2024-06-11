@@ -93,7 +93,7 @@ const Search = () => {
         ref={searchInputRef}
       />
       {isDropdownVisible && searchResults.length > 0 && (
-        <ul className="absolute top-full bg-white rounded-md border mt-2">
+        <ul className="absolute top-full bg-white rounded-md border mt-2 w-full">
           {searchResults.map((product) => (
             <li
               key={product.id}
